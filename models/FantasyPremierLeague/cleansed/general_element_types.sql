@@ -6,7 +6,7 @@ With
       , singular_name
       , element_count
       , row_number() over (partition by id order by extraction_timestamp desc) as sort_latest_record
-    FROM `fantasy-premier-league-469511.raw_fpl.raw_fpl_element_types`
+    FROM `raw_fpl.raw_fpl_element_types`
   )
   SELECT
     id

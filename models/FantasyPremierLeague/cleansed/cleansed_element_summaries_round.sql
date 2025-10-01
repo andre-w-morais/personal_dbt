@@ -41,7 +41,7 @@ with deduplication as (
     , selected
     , value
     , modified
-    , row_number() over(partition by element order by extraction_timestamp desc) as sort_latest_record
+    , row_number() over(partition by element, round order by extraction_timestamp desc) as sort_latest_record
   FROM `fantasy-premier-league-469511.raw_fpl.raw_fpl_element_summaries_round`
 )
 SELECT

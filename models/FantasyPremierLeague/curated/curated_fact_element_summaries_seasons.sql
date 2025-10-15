@@ -1,0 +1,34 @@
+SELECT
+    element_id
+    , element_code
+    , season_name
+    , start_cost
+    , end_cost
+    , starts
+    , minutes
+    , total_points
+    , goals_scored
+    , expected_goals
+    , assists
+    , expected_assists
+    , expected_goal_involvements
+    , clean_sheets
+    , goals_conceded
+    , expected_goals_conceded
+    , saves
+    , tackles
+    , recoveries
+    , clearances_blocks_interceptions
+    , defensive_contribution
+    , penalties_missed
+    , penalties_saved
+    , own_goals
+    , bps
+    , bonus
+    , yellow_cards
+    , red_cards
+    , ict_index
+    , threat
+    , creativity
+    , influence
+FROM {{ref("cleansed_element_summaries_past_seasons")}}

@@ -1,5 +1,7 @@
 sources:
   - name: fantasy_premier_league
+    database: fantasy-premier-league-469511
+    schema: raw_fpl
     tables:
       - name: raw_fpl_element_types
         description: 'Clone of raw element types data extracted from the FPL API. Grain: One record is equal to one event.'

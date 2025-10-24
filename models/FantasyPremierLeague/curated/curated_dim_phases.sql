@@ -4,4 +4,4 @@ SELECT
     , stop_event
     , name
     , highest_score
-FROM {{ref("cleansed_general_phases")}}
+FROM {{ref("cleansed_phases")}}

@@ -8,53 +8,81 @@ sources:
         columns:
           - name: id
             description: Unique identifier of element types. This attribute is the tables PRIMARY KEY.
-            data_tests:
+            tests:
               - not_null
           - name: extraction_method
-            data_tests:
+            tests:
               - not_null
               - accepted_values:
                   values: ['automated']
           - name: extraction_source
-            data_tests:
+            tests:
               - not_null
               - accepted_values:
                   values: ['fpl_api']
           - name: extraction_timestamp
-            data_tests:
+            tests:
               - not_null
           - name: sub_positions_locked
           - name: squad_select
-            data_tests:
+            tests:
               - not_null
           - name: ui_shirt_specific
-            data_tests:
+            tests:
               - not_null
           - name: squad_max_play
-            data_tests:
+            tests:
               - not_null
           - name: squad_min_play
-            data_tests:
+            tests:
               - not_null
           - name: squad_max_select
           - name: singular_name_short
-            data_tests:
+            tests:
               - not_null
               - accepted_values:
                   values: ['GKP', 'DEF', 'MID', 'FWD']
           - name: plural_name_short
-            data_tests:
+            tests:
               - not_null
               - accepted_values:
                   values: ['GKP', 'DEF', 'MID', 'FWD']
           - name: singular_name
-            data_tests:
+            tests:
               - not_null
               - accepted_values:
                   values: ['Goalkeeper', 'Defender', 'Midfielder', 'Forward']
           - name: element_count
           - name: plural_name
-            data_tests:
+            tests:
               - not_null
               - accepted_values:
                   values: ['Goalkeepers', 'Defenders', 'Midfielders', 'Forwards']
+      - name: raw_fpl_phases
+        description: 'Clone of raw phases data extracted from the FPL API. Grain: One record is equal to one phase.'
+        columns:
+          - name: id
+            tests:
+              - not_null
+          - name: name
+            tests:
+              - not_null
+          - name: start_event
+            tests:
+              - not_null
+          - name: stop_event
+            tests:
+              - not_null
+          - name: highest_score
+            tests:
+              - not_null
+          - name: extraction_method
+            tests:
+              - not_null
+          - name: extraction_source
+            tests:
+              - not_null
+          - name: extraction_timestamp
+            tests:
+              - not_null
+

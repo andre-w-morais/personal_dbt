@@ -1,0 +1,70 @@
+sources:
+  - name: fantasy_premier_league
+    database: fantasy-premier-league-469511
+    schema: raw_fpl
+    tables:
+      - name: raw_fpl_element_types
+        description: 'Clone of raw element types data extracted from the FPL API. Grain: One record is equal to one event.'
+        columns:
+          - name: id
+            description: Unique identifier of element types. This attribute is the tables PRIMARY KEY.
+            data_tests:
+              - unique
+              - not_null
+          - name: extraction_method
+            data_tests:
+              - not_null
+              - accepted_values:
+                  values: ['automated']
+          - name: extraction_source
+            data_tests:
+              - not_null
+              - accepted_values:
+                  values: ['fpl_api']
+          - name: extraction_timestamp
+            data_tests:
+              - not_null
+          - name: sub_positions_locked
+          - name: squad_select
+            data_tests:
+              - not_null
+              - accepted_values:
+                  values: [2, 3, 5]
+          - name: ui_shirt_specific
+            data_tests:
+              - not_null
+              - accepted_values:
+                  values: [true, false]
+          - name: squad_max_play
+            data_tests:
+              - not_null
+              - accepted_values:
+                  values: [1, 3, 5]
+                  column_name: "CAST(squad_max_play AS INT64)"
+          - name: squad_min_play
+            data_tests:
+              - not_null
+              - accepted_values:
+                  values: [1, 2, 3]
+          - name: squad_max_select
+          - name: singular_name_short
+            data_tests:
+              - not_null
+              - accepted_values:
+                  values: ['GKP', 'DEF', 'MID', 'FWD']
+          - name: plural_name_short
+            data_tests:
+              - not_null
+              - accepted_values:
+                  values: ['GKP', 'DEF', 'MID', 'FWD']
+          - name: singular_name
+            data_tests:
+              - not_null
+              - accepted_values:
+                  values: ['Goalkeeper', 'Defender', 'Midfielder', 'Forward']
+          - name: element_count
+          - name: plural_name
+            data_tests:
+              - not_null
+              - accepted_values:
+                  values: ['Goalkeepers', 'Defenders', 'Midfielders', 'Forwards']

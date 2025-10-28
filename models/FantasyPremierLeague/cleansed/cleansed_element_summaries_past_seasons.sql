@@ -33,7 +33,7 @@ with deduplication as (
     , creativity
     , influence
     , row_number() over(partition by element_id, season_name order by extraction_timestamp desc) as sort_latest_record
-  FROM `fantasy-premier-league-469511.raw_fpl.raw_fpl_element_summaries_past_season`
+  FROM {{ source("fantasy_premier_league", "raw_fpl_element_summaries_past_season")}}
 )
 SELECT
     element_id

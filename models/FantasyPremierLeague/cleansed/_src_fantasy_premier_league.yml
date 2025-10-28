@@ -58,6 +58,7 @@ sources:
               - not_null
               - accepted_values:
                   values: ['Goalkeepers', 'Defenders', 'Midfielders', 'Forwards']
+
       - name: raw_fpl_phases
         description: 'Clone of raw phases data extracted from the FPL API. Grain: One record is equal to one phase.'
         columns:
@@ -85,6 +86,7 @@ sources:
           - name: extraction_timestamp
             tests:
               - not_null
+
       - name: raw_fpl_teams
         description: 'Clone of raw teams data extracted from the FPL API. Grain: One record is equal to one team.'
         columns:
@@ -134,5 +136,57 @@ sources:
             tests:
               - not_null
           - name: extraction_method
+            tests:
+              - not_null
+
+      - name: raw_fpl_fixtures
+        description: 'Clone of raw fixture data extracted from the FPL API. Grain: One record is equal to one event.'
+        columns:
+          - name: id
+            tests:
+              - not_null
+          - name: code
+            tests:
+              - not_null
+          - name: kickoff_time
+            tests:
+              - not_null
+          - name: provisional_start_time
+            tests:
+              - not_null
+          - name: started
+            tests:
+              - not_null
+          - name: finished
+            tests:
+              - not_null
+          - name: finished_provisional
+            tests:
+              - not_null
+          - name: event
+            tests:
+              - not_null
+          - name: pulse_id
+            tests:
+              - not_null
+          - name: team_h
+            tests:
+              - not_null
+          - name: team_h_difficulty
+            tests:
+              - not_null
+          - name: team_h_score
+            tests:
+              - not_null
+          - name: team_a
+            tests:
+              - not_null
+          - name: team_a_difficulty
+            tests:
+              - not_null
+          - name: team_a_score
+            tests:
+              - not_null
+          - name: minutes
             tests:
               - not_null

@@ -190,6 +190,16 @@ sources:
           - name: minutes
             tests:
               - not_null
+          - name: extraction_method
+            tests:
+              - not_null
+          - name: extraction_source
+            tests:
+              - not_null
+          - name: extraction_timestamp
+            tests:
+              - not_null
+
       - name: raw_fpl_element_summaries_past_season
         description: 'Clone of raw fixture data extracted from the FPL API. Grain: One record is equal to one element per season.'
         columns:
@@ -289,6 +299,16 @@ sources:
           - name: influence
             tests:
               - not_null
+          - name: extraction_method
+            tests:
+              - not_null
+          - name: extraction_source
+            tests:
+              - not_null
+          - name: extraction_timestamp
+            tests:
+              - not_null
+
       - name: raw_fpl_elements
         description: 'Clone of raw elements data extracted from the FPL API. Grain: One record is equal to one element.'
         columns:
@@ -580,5 +600,68 @@ sources:
             tests:
               - not_null
           - name: extraction_method
+            tests:
+              - not_null
+      - name: raw_fpl_events
+        description: 'Clone of raw events data extracted from the FPL API. Grain: One record is equal to one events.'
+        columns:
+          - name:  id
+            tests:
+              - not_null
+          - name: name
+            tests:
+              - not_null
+          - name: deadline_time
+            tests:
+              - not_null
+          - name: deadline_time_epoch
+            tests:
+              - not_null
+          - name: release_time
+          - name: is_current
+            tests:
+              - not_null
+          - name: is_previous
+            tests:
+              - not_null
+          - name: is_next
+            tests:
+              - not_null
+          - name: released
+            tests:
+              - not_null
+          - name: finished
+            tests:
+              - not_null
+          - name: data_checked
+            tests:
+              - not_null
+          - name: can_enter
+            tests:
+              - not_null
+          - name: can_manage
+            tests:
+              - not_null
+          - name: most_captained
+          - name: most_vice_captained
+          - name: top_element
+          - name: most_selected
+          - name: highest_score
+          - name: average_entry_score
+            tests:
+              - not_null
+          - name: highest_scoring_entry
+          - name: ranked_count
+            tests:
+              - not_null
+          - name: transfers_made
+          - name: most_transferred_in
+          - name: extraction_method
+            tests:
+              - not_null
+          - name: extraction_source
+            tests:
+              - not_null
+          - name: extraction_timestamp
             tests:
               - not_null

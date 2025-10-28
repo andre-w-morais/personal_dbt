@@ -104,4 +104,4 @@ SELECT
   , extraction_source
   , extraction_method
   , row_number() over(partition by id order by extraction_timestamp desc) as sort_latest_record
-FROM `fantasy-premier-league-469511.raw_fpl.raw_fpl_elements`
+FROM {{ source("fantasy_premier_league", "raw_fpl_elements") }}

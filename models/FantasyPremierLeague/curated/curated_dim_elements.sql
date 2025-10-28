@@ -15,5 +15,5 @@ SELECT
         WHEN sort_latest_record = 1 THEN NULL
         ELSE LEAD(extraction_timestamp) OVER(PARTITION BY code ORDER BY extraction_timestamp ASC)
         end AS valid_to
-FROM {{ref('cleansed_general_elements')}}
+FROM {{ref('cleansed_elements')}}
 order by code, extraction_timestamp ASC

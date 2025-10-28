@@ -140,7 +140,7 @@ sources:
               - not_null
 
       - name: raw_fpl_fixtures
-        description: 'Clone of raw fixture data extracted from the FPL API. Grain: One record is equal to one event.'
+        description: 'Clone of raw fixture data extracted from the FPL API. Grain: One record is equal to one fixture.'
         columns:
           - name: id
             tests:
@@ -191,7 +191,7 @@ sources:
             tests:
               - not_null
       - name: raw_fpl_element_summaries_past_season
-        description: 'Clone of raw fixture data extracted from the FPL API. Grain: One record is equal to one event.'
+        description: 'Clone of raw fixture data extracted from the FPL API. Grain: One record is equal to one element per season.'
         columns:
           - name: element_id
             tests:
@@ -287,5 +287,320 @@ sources:
             tests:
               - not_null
           - name: influence
+            tests:
+              - not_null
+      - name: raw_fpl_elements
+        description: 'Clone of raw elements data extracted from the FPL API. Grain: One record is equal to one element.'
+        columns:
+          - name: id
+            tests:
+              - not_null
+          - name: code
+            tests:
+              - not_null
+          - name: has_temporary_code
+            tests:
+              - not_null
+          - name: opta_code
+            tests:
+              - not_null
+          - name: element_type
+            tests:
+              - not_null
+          - name: web_name
+            tests:
+              - not_null
+          - name: first_name
+            tests:
+              - not_null
+          - name: second_name
+            tests:
+              - not_null
+          - name: squad_number
+            tests:
+              - not_null
+          - name: birth_date
+            tests:
+              - not_null
+          - name: region
+            tests:
+              - not_null
+          - name: team
+            tests:
+              - not_null
+          - name: team_code
+            tests:
+              - not_null
+          - name: team_join_date
+            tests:
+              - not_null
+          - name: can_select
+            tests:
+              - not_null
+          - name: can_transact
+            tests:
+              - not_null
+          - name: removed
+            tests:
+              - not_null
+          - name: corners_and_indirect_freekicks_order
+            tests:
+              - not_null
+          - name: corners_and_indirect_freekicks_text
+            tests:
+              - not_null
+          - name: penalties_order
+            tests:
+              - not_null
+          - name: penalties_text
+            tests:
+              - not_null
+          - name: direct_freekicks_order
+            tests:
+              - not_null
+          - name: direct_freekicks_text
+            tests:
+              - not_null
+          - name: status
+            tests:
+              - not_null
+          - name: news
+            tests:
+              - not_null
+          - name: news_added
+            tests:
+              - not_null
+          - name: now_cost
+            tests:
+              - not_null
+          - name: now_cost_rank
+            tests:
+              - not_null
+          - name: now_cost_rank_type
+            tests:
+              - not_null
+          - name: cost_change_start
+            tests:
+              - not_null
+          - name: cost_change_start_fall
+            tests:
+              - not_null
+          - name: cost_change_event
+            tests:
+              - not_null
+          - name: cost_change_event_fall
+            tests:
+              - not_null
+          - name: selected_by_percent
+            tests:
+              - not_null
+          - name: selected_rank
+            tests:
+              - not_null
+          - name: selected_rank_type
+            tests:
+              - not_null
+          - name: transfers_out_event
+            tests:
+              - not_null
+          - name: transfers_out
+            tests:
+              - not_null
+          - name: transfers_in_event
+            tests:
+              - not_null
+          - name: transfers_in
+            tests:
+              - not_null
+          - name: ict_index
+            tests:
+              - not_null
+          - name: ict_index_rank
+            tests:
+              - not_null
+          - name: ict_index_rank_type
+            tests:
+              - not_null
+          - name: threat
+            tests:
+              - not_null
+          - name: threat_rank
+            tests:
+              - not_null
+          - name: threat_rank_type
+            tests:
+              - not_null
+          - name: creativity
+            tests:
+              - not_null
+          - name: creativity_rank
+            tests:
+              - not_null
+          - name: creativity_rank_type
+            tests:
+              - not_null
+          - name: influence
+            tests:
+              - not_null
+          - name: influence_rank
+            tests:
+              - not_null
+          - name: influence_rank_type
+            tests:
+              - not_null
+          - name: minutes
+            tests:
+              - not_null
+          - name: starts
+            tests:
+              - not_null
+          - name: starts_per_90
+            tests:
+              - not_null
+          - name: total_points
+            tests:
+              - not_null
+          - name: points_per_game
+            tests:
+              - not_null
+          - name: points_per_game_rank
+            tests:
+              - not_null
+          - name: points_per_game_rank_type
+            tests:
+              - not_null
+          - name: value_season
+            tests:
+              - not_null
+          - name: event_points
+            tests:
+              - not_null
+          - name: form
+            tests:
+              - not_null
+          - name: form_rank
+            tests:
+              - not_null
+          - name: form_rank_type
+            tests:
+              - not_null
+          - name: value_form
+            tests:
+              - not_null
+          - name: goals_scored
+            tests:
+              - not_null
+          - name: expected_goals
+            tests:
+              - not_null
+          - name: expected_goals_per_90
+            tests:
+              - not_null
+          - name: assists
+            tests:
+              - not_null
+          - name: expected_assists
+            tests:
+              - not_null
+          - name: expected_assists_per_90
+            tests:
+              - not_null
+          - name: expected_goal_involvements
+            tests:
+              - not_null
+          - name: expected_goal_involvements_per_90
+            tests:
+              - not_null
+          - name: clean_sheets
+            tests:
+              - not_null
+          - name: clean_sheets_per_90
+            tests:
+              - not_null
+          - name: goals_conceded
+            tests:
+              - not_null
+          - name: goals_conceded_per_90
+            tests:
+              - not_null
+          - name: expected_goals_conceded
+            tests:
+              - not_null
+          - name: expected_goals_conceded_per_90
+            tests:
+              - not_null
+          - name: defensive_contribution
+            tests:
+              - not_null
+          - name: defensive_contribution_per_90
+            tests:
+              - not_null
+          - name: clearances_blocks_interceptions
+            tests:
+              - not_null
+          - name: tackles
+            tests:
+              - not_null
+          - name: recoveries
+            tests:
+              - not_null
+          - name: saves
+            tests:
+              - not_null
+          - name: saves_per_90
+            tests:
+              - not_null
+          - name: penalties_saved
+            tests:
+              - not_null
+          - name: penalties_missed
+            tests:
+              - not_null
+          - name: own_goals
+            tests:
+              - not_null
+          - name: yellow_cards
+            tests:
+              - not_null
+          - name: red_cards
+            tests:
+              - not_null
+          - name: bps
+            tests:
+              - not_null
+          - name: bonus
+            tests:
+              - not_null
+          - name: chance_of_playing_this_round
+            tests:
+              - not_null
+          - name: chance_of_playing_next_round
+            tests:
+              - not_null
+          - name: ep_this
+            tests:
+              - not_null
+          - name: ep_next
+            tests:
+              - not_null
+          - name: in_dreamteam
+            tests:
+              - not_null
+          - name: dreamteam_count
+            tests:
+              - not_null
+          - name: special
+            tests:
+              - not_null
+          - name: photo
+            tests:
+              - not_null
+          - name: extraction_timestamp
+            tests:
+              - not_null
+          - name: extraction_source
+            tests:
+              - not_null
+          - name: extraction_method
             tests:
               - not_null

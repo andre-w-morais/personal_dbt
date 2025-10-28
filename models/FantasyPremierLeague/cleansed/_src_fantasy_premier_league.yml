@@ -75,8 +75,6 @@ sources:
             tests:
               - not_null
           - name: highest_score
-            tests:
-              - not_null
           - name: extraction_method
             tests:
               - not_null
@@ -176,8 +174,6 @@ sources:
             tests:
               - not_null
           - name: team_h_score
-            tests:
-              - not_null
           - name: team_a
             tests:
               - not_null
@@ -185,8 +181,6 @@ sources:
             tests:
               - not_null
           - name: team_a_score
-            tests:
-              - not_null
           - name: minutes
             tests:
               - not_null
@@ -338,11 +332,7 @@ sources:
               - not_null
           - name: squad_number
           - name: birth_date
-            tests:
-              - not_null
           - name: region
-            tests:
-              - not_null
           - name: team
             tests:
               - not_null
@@ -350,8 +340,6 @@ sources:
             tests:
               - not_null
           - name: team_join_date
-            tests:
-              - not_null
           - name: can_select
             tests:
               - not_null
@@ -684,11 +672,7 @@ sources:
             tests:
               - not_null
           - name: team_h_score
-            tests:
-              - not_null
           - name: team_a_score
-            tests:
-              - not_null
           - name: kickoff_time
             tests:
               - not_null

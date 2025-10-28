@@ -665,3 +665,138 @@ sources:
           - name: extraction_timestamp
             tests:
               - not_null
+      - name: raw_fpl_element_summaries_round
+        description: 'Clone of raw element summaries round data extracted from the FPL API. Grain: One record is equal to one element round performance.'
+        columns:
+          - name: element
+            tests:
+              - not_null
+          - name: round
+            tests:
+              - not_null
+          - name: fixture
+            tests:
+              - not_null
+          - name: was_home
+            tests:
+              - not_null
+          - name: opponent_team
+            tests:
+              - not_null
+          - name: team_h_score
+            tests:
+              - not_null
+          - name: team_a_score
+            tests:
+              - not_null
+          - name: kickoff_time
+            tests:
+              - not_null
+          - name: total_points
+            tests:
+              - not_null
+          - name: bps
+            tests:
+              - not_null
+          - name: bonus
+            tests:
+              - not_null
+          - name: starts
+            tests:
+              - not_null
+          - name: minutes
+            tests:
+              - not_null
+          - name: goals_scored
+            tests:
+              - not_null
+          - name: expected_goals
+            tests:
+              - not_null
+          - name: assists
+            tests:
+              - not_null
+          - name: expected_assists
+            tests:
+              - not_null
+          - name: expected_goal_involvements
+            tests:
+              - not_null
+          - name: goals_conceded
+            tests:
+              - not_null
+          - name: expected_goals_conceded
+            tests:
+              - not_null
+          - name: clean_sheets
+            tests:
+              - not_null
+          - name: saves
+            tests:
+              - not_null
+          - name: own_goals
+            tests:
+              - not_null
+          - name: penalties_saved
+            tests:
+              - not_null
+          - name: penalties_missed
+            tests:
+              - not_null
+          - name: tackles
+            tests:
+              - not_null
+          - name: recoveries
+            tests:
+              - not_null
+          - name: clearances_blocks_interceptions
+            tests:
+              - not_null
+          - name: defensive_contribution
+            tests:
+              - not_null
+          - name: yellow_cards
+            tests:
+              - not_null
+          - name: red_cards
+            tests:
+              - not_null
+          - name: ict_index
+            tests:
+              - not_null
+          - name: threat
+            tests:
+              - not_null
+          - name: creativity
+            tests:
+              - not_null
+          - name: influence
+            tests:
+              - not_null
+          - name: transfers_in
+            tests:
+              - not_null
+          - name: transfers_out
+            tests:
+              - not_null
+          - name: transfers_balance
+            tests:
+              - not_null
+          - name: selected
+            tests:
+              - not_null
+          - name: value
+            tests:
+              - not_null
+          - name: modified
+            tests:
+              - not_null
+          - name: extraction_method
+            tests:
+              - not_null
+          - name: extraction_source
+            tests:
+              - not_null
+          - name: extraction_timestamp
+            tests:
+              - not_null

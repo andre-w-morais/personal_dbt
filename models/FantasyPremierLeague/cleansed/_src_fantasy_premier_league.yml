@@ -85,4 +85,54 @@ sources:
           - name: extraction_timestamp
             tests:
               - not_null
-
+      - name: raw_fpl_teams
+        description: 'Clone of raw teams data extracted from the FPL API. Grain: One record is equal to one team.'
+        columns:
+          - name: id
+            tests:
+              - not_null
+          - name: code
+            tests:
+              - not_null
+          - name: pulse_id
+            tests:
+              - not_null
+          - name: name
+            tests:
+              - not_null
+          - name: short_name
+            tests:
+              - not_null
+          - name: strength
+            tests:
+              - not_null
+          - name: strength_overall_home
+            tests:
+              - not_null
+          - name: strength_overall_away
+            tests:
+              - not_null
+          - name: strength_attack_home
+            tests:
+              - not_null
+          - name: strength_attack_away
+            tests:
+              - not_null
+          - name: strength_defence_home
+            tests:
+              - not_null
+          - name: strength_defence_away
+            tests:
+              - not_null
+          - name: position
+            tests:
+              - not_null
+          - name: extraction_timestamp
+            tests:
+              - not_null
+          - name: extraction_source
+            tests:
+              - not_null
+          - name: extraction_method
+            tests:
+              - not_null

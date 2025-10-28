@@ -14,4 +14,4 @@
     , position
     , extraction_timestamp
     , row_number() over(partition by id order by extraction_timestamp desc) as sort_latest_record
-  FROM `raw_fpl.raw_fpl_teams`
+  FROM {{ source("fantasy_premier_league", "raw_fpl_teams") }}

@@ -17,4 +17,4 @@ SELECT
         WHEN sort_latest_record = 1 THEN NULL
         ELSE LEAD(extraction_timestamp) OVER(PARTITION BY code ORDER BY extraction_timestamp ASC)
         END AS valid_to
-FROM {{ref("cleansed_general_teams")}}
+FROM {{ref("cleansed_teams")}}

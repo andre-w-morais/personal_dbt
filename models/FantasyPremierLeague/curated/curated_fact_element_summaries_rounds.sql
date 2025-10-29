@@ -3,6 +3,7 @@ SELECT
     , event_id
     , fixture_id
     , opponent_team_id
+    , kickoff_at
     , was_home
     , team_h_score
     , team_a_score

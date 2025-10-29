@@ -7,7 +7,7 @@ with deduplication as (
     , opponent_team
     , team_h_score
     , team_a_score
-    , kickoff_time
+    , kickoff_time AS kickoff_at
     , total_points
     , bps
     , bonus

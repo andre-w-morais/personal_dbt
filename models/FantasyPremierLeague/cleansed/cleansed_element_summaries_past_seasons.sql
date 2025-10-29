@@ -42,7 +42,7 @@ SELECT
     , start_cost
     , end_cost
     , starts
-    , minutes
+    , minutes AS minutes_played
     , total_points
     , goals_scored
     , expected_goals

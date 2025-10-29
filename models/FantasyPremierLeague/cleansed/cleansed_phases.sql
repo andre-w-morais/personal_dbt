@@ -1,21 +1,21 @@
-with
-    deduplication as (
-        select
-            id
-            , highest_score
-            , start_event
-            , stop_event
-            , name
-            , row_number() over (
-                partition by id order by extraction_timestamp desc
-            ) as sort_latest_record
-        from {{ source("fantasy_premier_league", "raw_fpl_phases") }}
+WITH
+    deduplication AS (
+        SELECT
+            id,
+            highest_score,
+            start_event,
+            stop_event,
+            name,
+            ROW_NUMBER() OVER (
+                PARTITION BY id ORDER BY extraction_timestamp DESC
+            ) AS sort_latest_record
+        FROM {{ source("fantasy_premier_league", "raw_fpl_phases") }}
     )
-select 
-    id
-    , highest_score
-    , start_event
-    , stop_event
-    , name
-from deduplication
-where sort_latest_record = 1
+SELECT
+    id AS phase_id,
+    highest_score,
+    start_event AS start_event_id,
+    stop_event AS stop_event_id,
+    name AS phase_name
+FROM deduplication
+WHERE sort_latest_record = 1

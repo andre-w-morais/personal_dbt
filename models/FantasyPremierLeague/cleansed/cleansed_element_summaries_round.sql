@@ -7,7 +7,7 @@ with deduplication as (
     , opponent_team
     , team_h_score
     , team_a_score
-    , kickoff_time
+    , kickoff_time AS kickoff_at
     , total_points
     , bps
     , bonus
@@ -45,11 +45,11 @@ with deduplication as (
   FROM {{ source("fantasy_premier_league", "raw_fpl_element_summaries_round")}}
 )
 SELECT
-    element
-    , round
-    , fixture
+    element AS element_id
+    , round AS event_id
+    , fixture AS fixture_id
     , was_home
-    , opponent_team
+    , opponent_team AS opponent_team_id
     , team_h_score
     , team_a_score
     , kickoff_time
@@ -57,7 +57,7 @@ SELECT
     , bps
     , bonus
     , starts
-    , minutes
+    , minutes AS minutes_played
     , goals_scored
     , expected_goals
     , assists
@@ -85,6 +85,6 @@ SELECT
     , transfers_balance
     , selected
     , value
-    , modified
+    , modified AS is_modified
 FROM deduplication
 WHERE sort_latest_record = 1

@@ -5,7 +5,7 @@ SELECT
     , start_cost
     , end_cost
     , starts
-    , minutes
+    , minutes_played
     , total_points
     , goals_scored
     , expected_goals

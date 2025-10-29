@@ -1,21 +1,21 @@
 SELECT
-  id
-  , code
+  id AS element_id
+  , code AS element_code
   , has_temporary_code
   , opta_code
-  , element_type
-  , web_name
-  , first_name
-  , second_name
+  , element_type AS element_type_id
+  , web_name AS element_web_name
+  , first_name AS element_first_name
+  , second_name AS element_second_name
   , squad_number
   , birth_date
   , region
-  , team
+  , team AS team_id
   , team_code
   , team_join_date
   , can_select
   , can_transact
-  , removed
+  , removed AS is_removed
   , corners_and_indirect_freekicks_order
   , corners_and_indirect_freekicks_text
   , penalties_order
@@ -51,7 +51,7 @@ SELECT
   , influence
   , influence_rank
   , influence_rank_type
-  , minutes
+  , minutes AS minutes_played
   , starts
   , starts_per_90
   , total_points
@@ -100,7 +100,7 @@ SELECT
   , dreamteam_count
   , special
   , photo
-  , extraction_timestamp
+  , extraction_timestamp AS extracted_at
   , extraction_source
   , extraction_method
   , row_number() over(partition by id order by extraction_timestamp desc) as sort_latest_record

@@ -1,19 +1,14 @@
 SELECT
-    code
-    , id
-    , web_name
-    , first_name
-    , second_name
+    element_code
+    , element_id
+    , element_web_name
+    , element_first_name
+    , element_second_name
     , birth_date
-    , DATE_DIFF(CAST(extraction_timestamp AS DATE), birth_date, YEAR) as age
+    , DATE_DIFF(CAST(extracted_at AS DATE), birth_date, YEAR) as element_age
     , opta_code
     , region
     , team_join_date
     , status
-    , extraction_timestamp as valid_from
-    , CASE 
-        WHEN sort_latest_record = 1 THEN NULL
-        ELSE LEAD(extraction_timestamp) OVER(PARTITION BY code ORDER BY extraction_timestamp ASC)
-        end AS valid_to
+    , extracted_at
 FROM {{ref('cleansed_elements')}}
-order by code, extraction_timestamp ASC

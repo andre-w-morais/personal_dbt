@@ -22,7 +22,7 @@ with deduplication as (
 SELECT
       id AS fixture_id
     , code as fixture_code
-    , kickoff_time
+    , kickoff_time AS kickoff_at
     , provisional_start_time
     , started AS is_started
     , finished AS is_finished

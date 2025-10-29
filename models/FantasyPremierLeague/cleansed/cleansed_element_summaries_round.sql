@@ -57,7 +57,7 @@ SELECT
     , bps
     , bonus
     , starts
-    , minutes
+    , minutes AS minutes_played
     , goals_scored
     , expected_goals
     , assists
@@ -85,6 +85,6 @@ SELECT
     , transfers_balance
     , selected
     , value
-    , modified
+    , modified AS is_modified
 FROM deduplication
 WHERE sort_latest_record = 1

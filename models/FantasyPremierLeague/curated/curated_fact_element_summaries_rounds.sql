@@ -10,7 +10,7 @@ SELECT
     , bps
     , bonus
     , starts
-    , minutes
+    , minutes_played
     , goals_scored
     , expected_goals
     , assists

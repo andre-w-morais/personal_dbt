@@ -1,8 +1,8 @@
 SELECT
-    id
-    , code
-    , element_type as element_type_id
-    , team AS team_id
+    element_id
+    , element_code
+    , element_type_id
+    , team_id
     , team_code
     , can_select
     , can_transact
@@ -32,7 +32,7 @@ SELECT
     , influence
     , influence_rank
     , influence_rank_type
-    , minutes
+    , minutes_played
     , starts
     , starts_per_90
     , total_points

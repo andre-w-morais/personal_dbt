@@ -1,9 +1,9 @@
 SELECT
-    code
-    , id
-    , event
+    fixture_code
+    , fixture_id
+    , event_id
     , kickoff_time
-    , started
-    , finished
-    , finished_provisional
+    , is_started
+    , is_finished
+    , is_provisionally_finished
 FROM {{ref("cleansed_fixtures")}}

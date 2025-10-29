@@ -20,14 +20,14 @@ with deduplication as (
   FROM {{ source("fantasy_premier_league", "raw_fpl_fixtures") }}
 )
 SELECT
-      id
-    , code
+      id AS fixture_id
+    , code as fixture_code
     , kickoff_time
     , provisional_start_time
-    , started
-    , finished
-    , finished_provisional
-    , event
+    , started AS is_started
+    , finished AS is_finished
+    , finished_provisional AS is_provisionally_finished
+    , event AS event_id
     , pulse_id
     , team_h
     , team_h_difficulty
@@ -35,6 +35,6 @@ SELECT
     , team_a_difficulty
     , team_h_score
     , team_a_score
-    , minutes
+    , minutes AS minutes_played
 FROM deduplication
 WHERE sort_latest_record = 1

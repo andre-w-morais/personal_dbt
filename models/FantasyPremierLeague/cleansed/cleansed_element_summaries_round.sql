@@ -45,11 +45,11 @@ with deduplication as (
   FROM {{ source("fantasy_premier_league", "raw_fpl_element_summaries_round")}}
 )
 SELECT
-    element
-    , round
-    , fixture
+    element AS element_id
+    , round AS event_id
+    , fixture AS fixture_id
     , was_home
-    , opponent_team
+    , opponent_team AS opponent_team_id
     , team_h_score
     , team_a_score
     , kickoff_time

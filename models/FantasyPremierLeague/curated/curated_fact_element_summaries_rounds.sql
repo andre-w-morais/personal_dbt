@@ -1,8 +1,8 @@
 SELECT
-    element AS element_id
-    , round AS event_id
-    , fixture AS fixture_id
-    , opponent_team AS opponent_team_id
+    element_id
+    , event_id
+    , fixture_id
+    , opponent_team_id
     , was_home
     , team_h_score
     , team_a_score

@@ -7,7 +7,7 @@ with deduplication as (
     , opponent_team
     , team_h_score
     , team_a_score
-    , kickoff_time AS kickoff_at
+    , kickoff_time
     , total_points
     , bps
     , bonus
@@ -52,7 +52,7 @@ SELECT
     , opponent_team AS opponent_team_id
     , team_h_score
     , team_a_score
-    , kickoff_time
+    , kickoff_time AS kickoff_at
     , total_points
     , bps
     , bonus

@@ -1,5 +1,6 @@
 SELECT
     fes.element_id
+    , de.element_web_name
     , fes.event_id
     , fes.fixture_id
     , fes.was_home
@@ -46,4 +47,5 @@ SELECT
     , fes.transfers_balance
     , fes.selected
 FROM {{ref("curated_fact_element_summaries_rounds")}} as fes
+    LEFT JOIN {{ ref("curated_dim_elements") }} as de ON de.element_id = fes.element_id
     LEFT JOIN {{ref("curated_dim_teams")}} as dt ON dt.team_id = fes.opponent_team_id AND CAST(dt.extracted_at AS DATE) = CAST(fes.kickoff_at AS DATE)

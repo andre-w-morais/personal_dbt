@@ -79,6 +79,6 @@ SELECT
     , ep_next
     , in_dreamteam
     , dreamteam_count
-    , DATE(extraction_timestamp) as snapshot_date
+    , DATE(extracted_at) as snapshot_date
     , sort_latest_record
 FROM {{ref("cleansed_elements")}}

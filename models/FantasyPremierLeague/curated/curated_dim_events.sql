@@ -1,6 +1,6 @@
 SELECT
-    id
-    , name
+    event_id
+    , event_name
     , deadline_time
     , deadline_time_epoch
     , is_current

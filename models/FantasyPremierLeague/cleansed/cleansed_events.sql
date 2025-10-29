@@ -27,8 +27,8 @@ With deduplication as (
   FROM {{ source("fantasy_premier_league", "raw_fpl_events") }}
 )
   SELECT
-    id
-    , name
+    id AS event_id
+    , name AS event_name
     , deadline_time
     , deadline_time_epoch
     , release_time

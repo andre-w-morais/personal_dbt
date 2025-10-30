@@ -12,5 +12,6 @@ SELECT
     , strength_defence_home
     , strength_defence_away
     , position
-    , extracted_at
+    , valid_from
+    , valid_to
 FROM {{ref("cleansed_teams")}}

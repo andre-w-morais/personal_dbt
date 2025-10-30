@@ -10,5 +10,6 @@ SELECT
     , region
     , team_join_date
     , status
-    , extracted_at
+    , valid_from
+    , valid_to
 FROM {{ref('cleansed_elements')}}

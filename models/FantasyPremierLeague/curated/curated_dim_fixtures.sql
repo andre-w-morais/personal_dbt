@@ -6,4 +6,6 @@ SELECT
     , is_started
     , is_finished
     , is_provisionally_finished
+    , valid_from
+    , valid_to
 FROM {{ref("cleansed_fixtures")}}

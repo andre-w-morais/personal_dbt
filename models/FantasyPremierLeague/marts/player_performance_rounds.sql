@@ -1,8 +1,31 @@
+WITH
+    teams AS (
+        SELECT DISTINCT
+            team_id
+            , short_team_name
+            , strength
+            , strength_overall_home
+            , strength_overall_away
+            , strength_attack_home
+            , strength_attack_away
+            , strength_defence_home
+            , strength_defence_away
+        FROM {{ref("curated_dim_teams")}}
+    )
 SELECT
     fes.element_id
     , de.element_web_name
+    , CONCAT(de.element_first_name, ' ', de.element_second_name) AS element_full_name
     , fes.event_id
-    , fes.fixture_id
+    , dev.event_name
+    , t.short_team_name AS opponent_team
+    , t.strength
+    , t.strength_overall_home
+    , t.strength_overall_away
+    , t.strength_attack_home
+    , t.strength_attack_away
+    , t.strength_defence_home
+    , t.strength_defence_away
     , fes.was_home
     , fes.team_h_score
     , fes.team_a_score
@@ -33,19 +56,11 @@ SELECT
     , fes.threat
     , fes.creativity
     , fes.influence
-    , fes.opponent_team_id
-    , dt.strength AS oppenent_team_strength
-    , dt.strength_overall_home AS oppenent_team_strength_overall_home
-    , dt.strength_overall_away AS oppenent_team_strength_overall_away
-    , dt.strength_attack_home AS oppenent_team_strength_attack_home
-    , dt.strength_attack_away AS oppenent_team_strength_attack_away
-    , dt.strength_defence_home AS oppenent_team_strength_defence_home
-    , dt.strength_defence_away AS oppenent_team_strength_defence_away
-    , dt.position AS oppenent_team_position
     , fes.transfers_in
     , fes.transfers_out
     , fes.transfers_balance
     , fes.selected
-FROM {{ref("curated_fact_element_summaries_rounds")}} as fes
-    LEFT JOIN {{ ref("curated_dim_elements") }} as de ON de.element_id = fes.element_id
-    LEFT JOIN {{ref("curated_dim_teams")}} as dt ON dt.team_id = fes.opponent_team_id AND CAST(dt.extracted_at AS DATE) = CAST(fes.kickoff_at AS DATE)
+FROM {{ref("curated_fact_element_summaries_rounds")}} AS fes
+    LEFT JOIN {{ ref("curated_dim_elements") }} AS de ON de.element_id = fes.element_id
+    LEFT JOIN {{ ref("curated_dim_events")}} AS dev ON dev.event_id = fes.event_id
+    LEFT JOIN teams AS t ON t.team_id = fes.opponent_team_id

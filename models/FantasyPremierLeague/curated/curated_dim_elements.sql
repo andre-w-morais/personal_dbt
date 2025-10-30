@@ -5,10 +5,11 @@ SELECT
     , element_first_name
     , element_second_name
     , birth_date
-    , DATE_DIFF(CAST(extracted_at AS DATE), birth_date, YEAR) as element_age
+    , DATE_DIFF(CAST(valid_from AS DATE), birth_date, YEAR) as element_age
     , opta_code
     , region
     , team_join_date
     , status
-    , extracted_at
+    , valid_from
+    , valid_to
 FROM {{ref('cleansed_elements')}}

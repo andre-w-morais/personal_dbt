@@ -13,7 +13,7 @@ WITH
         FROM {{ source("fantasy_premier_league", "raw_fpl_phases") }}
     )
 SELECT
-    , id AS phase_id
+    id AS phase_id
     , highest_score
     , start_event AS start_event_id
     , stop_event AS stop_event_id

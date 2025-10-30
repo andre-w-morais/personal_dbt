@@ -14,6 +14,7 @@ WITH
             , strength_defence_home
             , strength_defence_away
             , position
+            , extraction_timestamp
             , row_number() over(partition by id order by extraction_timestamp desc) as sort_latest_record
         FROM {{ source("fantasy_premier_league", "raw_fpl_teams") }}
     )

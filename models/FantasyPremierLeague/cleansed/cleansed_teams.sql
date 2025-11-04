@@ -16,6 +16,7 @@ WITH
             , position
             , extraction_timestamp
             , row_number() over(partition by id order by extraction_timestamp desc) as sort_latest_record
+            , row_number() over(partition by id order by extraction_timestamp asc) as sort_first_record
         FROM {{ source("fantasy_premier_league", "raw_fpl_teams") }}
     )
 SELECT  
@@ -32,7 +33,10 @@ SELECT
     , strength_defence_home
     , strength_defence_away
     , position
-    , CAST(extraction_timestamp AS DATE) AS valid_from
+    , CASE
+        WHEN sort_first_record = 1 THEN CAST('2025-08-15' AS DATE)
+        ELSE CAST(extraction_timestamp AS DATE) 
+        END AS valid_from
     , CASE 
         WHEN sort_latest_record = 1 THEN CAST('9999-12-31' AS DATE)
         ELSE LAG(CAST(extraction_timestamp AS DATE)) OVER(PARTITION BY id ORDER BY extraction_timestamp DESC)

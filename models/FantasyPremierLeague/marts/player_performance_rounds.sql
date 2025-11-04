@@ -6,13 +6,13 @@ SELECT
     , fes.kickoff_at
     , dev.event_name
     , dt.short_team_name AS opponent_team
-    , dt.strength
-    , dt.strength_overall_home
-    , dt.strength_overall_away
-    , dt.strength_attack_home
-    , dt.strength_attack_away
-    , dt.strength_defence_home
-    , dt.strength_defence_away
+    , dt.strength AS opponent_team_strength
+    , dt.strength_overall_home AS opponent_team_strength_overall_home
+    , dt.strength_overall_away AS opponent_team_strength_overall_away
+    , dt.strength_attack_home AS opponent_team_strength_attack_home
+    , dt.strength_attack_away AS opponent_team_strength_attack_away
+    , dt.strength_defence_home AS opponent_team_strength_defence_home
+    , dt.strength_defence_away AS opponent_team_strength_defence_away
     , fes.was_home
     , fes.team_h_score
     , fes.team_a_score

@@ -47,7 +47,8 @@ SELECT
     , fes.transfers_out
     , fes.transfers_balance
     , fes.selected
-FROM `fantasy-premier-league-469511`.`amorais_dbt`.`curated_fact_element_summaries_rounds` AS fes
-    LEFT JOIN `fantasy-premier-league-469511`.`amorais_dbt`.`curated_dim_elements` AS de ON de.element_id = fes.element_id AND (CAST(fes.kickoff_at AS DATE) BETWEEN de.valid_from AND de.valid_to)
-    LEFT JOIN `fantasy-premier-league-469511`.`amorais_dbt`.`curated_dim_events` AS dev ON dev.event_id = fes.event_id AND (DATE(fes.kickoff_at) BETWEEN dev.valid_from AND dev.valid_to)
-    LEFT JOIN `fantasy-premier-league-469511`.`amorais_dbt`.`curated_dim_teams` AS dt ON dt.team_id = fes.opponent_team_id AND (DATE(fes.kickoff_at) BETWEEN dt.valid_from AND dt.valid_to)
+FROM {{ ref("curated_fact_element_summaries_rounds") }} AS fes
+    LEFT JOIN {{ref("curated_dim_elements")}} AS de ON de.element_id = fes.element_id AND (CAST(fes.kickoff_at AS DATE) BETWEEN de.valid_from AND de.valid_to)
+    LEFT JOIN {{ref("curated_dim_events")}} AS dev ON dev.event_id = fes.event_id AND (DATE(fes.kickoff_at) BETWEEN dev.valid_from AND dev.valid_to)
+    LEFT JOIN {{ref("curated_dim_element_types")}} AS det ON det.element_type_id = dev.element_type_id
+    LEFT JOIN {{ref("curated_dim_teams")}} AS dt ON dt.team_id = fes.opponent_team_id AND (DATE(fes.kickoff_at) BETWEEN dt.valid_from AND dt.valid_to)

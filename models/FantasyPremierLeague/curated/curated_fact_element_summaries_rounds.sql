@@ -6,6 +6,8 @@ SELECT
     , ce.team_id
     , cesr.opponent_team_id
     , cesr.kickoff_at
+    , ce.valid_from
+    , ce.valid_to
     , cesr.was_home
     , cesr.team_h_score
     , cesr.team_a_score
@@ -42,4 +44,4 @@ SELECT
     , cesr.selected
     , cesr.value
 FROM {{ref("cleansed_element_summaries_round")}} AS cesr
-    LEFT JOIN {{ref("cleansed_elements")}} AS ce ON ce.element_id = cesr.element_id
+    LEFT JOIN {{ref("cleansed_elements")}} AS ce ON ce.element_id = cesr.element_id AND (cesr.kickoff_at BETWEEN ce.valid_from AND ce.valid_to)

@@ -39,11 +39,11 @@ SELECT
     , team_a_score
     , minutes AS minutes_played
     , CASE
-        WHEN sort_first_record = 1 THEN CAST('2025-08-15' AS DATE)
-        ELSE CAST(extraction_timestamp AS DATE) 
+        WHEN sort_first_record = 1 THEN CAST('2025-08-15 00:00:00.000+00:00' AS TIMESTAMP)
+        ELSE extraction_timestamp 
         END AS valid_from
     , CASE 
-        WHEN sort_latest_record = 1 THEN CAST('9999-12-31' AS DATE)
-        ELSE LAG(CAST(extraction_timestamp AS DATE)) OVER(PARTITION BY id ORDER BY extraction_timestamp DESC)
+        WHEN sort_latest_record = 1 THEN CAST('9999-12-31 00:00:00.000+00:00' AS TIMESTAMP)
+        ELSE LAG(extraction_timestamp) OVER(PARTITION BY id ORDER BY extraction_timestamp DESC)
         END AS valid_to
 FROM deduplication

@@ -43,16 +43,16 @@ With ordering as (
     , data_checked AS is_data_checked
     , can_enter
     , can_manage
-    , most_captained
-    , most_vice_captained
-    , top_element
-    , most_selected
+    , most_captained AS most_captained_element_id
+    , most_vice_captained AS most_vice_captained_element_id
+    , top_element AS top_element_id
+    , most_selected AS most_selected_element_id
     , highest_score
     , average_entry_score
     , highest_scoring_entry
-    , ranked_count
+    , ranked_count AS total_fpl_teams
     , transfers_made
-    , most_transferred_in
+    , most_transferred_in AS most_transferred_in_element_id
     , CASE
         WHEN sort_first_record = 1 THEN CAST('2025-08-15 00:00:00.000+00:00' AS TIMESTAMP)
         ELSE extraction_timestamp 

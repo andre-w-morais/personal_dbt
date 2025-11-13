@@ -31,9 +31,9 @@ SELECT
     , finished_provisional AS is_provisionally_finished
     , event AS event_id
     , pulse_id
-    , team_h
+    , team_h AS team_h_id
     , team_h_difficulty
-    , team_a
+    , team_a AS team_a_id
     , team_a_difficulty
     , team_h_score
     , team_a_score

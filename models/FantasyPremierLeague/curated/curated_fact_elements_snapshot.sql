@@ -79,6 +79,6 @@ SELECT
     , ep_next
     , in_dreamteam
     , dreamteam_count
-    , DATE(valid_from) as snapshot_date
+    , valid_from as snapshot_at
     , sort_latest_record
 FROM {{ref("cleansed_elements")}}

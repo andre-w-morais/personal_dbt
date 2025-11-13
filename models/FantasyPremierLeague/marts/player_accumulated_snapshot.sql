@@ -56,7 +56,7 @@ SELECT
     , fes.bonus
     , fes.ep_this
     , fes.ep_next
-    , fes.snapshot_date
+    , fes.snapshot_at
     , fes.sort_latest_record
     , de.element_web_name
     , CONCAT(de.element_first_name, ' ', element_second_name) AS element_full_name

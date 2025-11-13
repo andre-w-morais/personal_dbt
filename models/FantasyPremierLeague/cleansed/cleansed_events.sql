@@ -45,7 +45,7 @@ With ordering as (
     , can_manage
     , most_captained AS most_captained_element_id
     , most_vice_captained AS most_vice_captained_element_id
-    , top_element AS top_element_element_id
+    , top_element AS top_element_id
     , most_selected AS most_selected_element_id
     , highest_score
     , average_entry_score

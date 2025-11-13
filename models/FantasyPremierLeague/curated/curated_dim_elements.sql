@@ -9,7 +9,15 @@ SELECT
     , opta_code
     , region
     , team_join_date
-    , status
+    , CASE 
+        WHEN status = 'a' THEN 'Available'
+        WHEN status = 'u' THEN 'Unvailable'
+        WHEN status = 'i' THEN 'Injured'
+        WHEN status = 'd' THEN 'Doubt'
+        WHEN status = 'n' THEN 'Ineligible to face parent club'
+        WHEN status = 's' THEN 'Suspended'
+        END as status
+    , news
     , valid_from
     , valid_to
 FROM {{ref('cleansed_elements')}}

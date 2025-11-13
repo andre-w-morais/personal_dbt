@@ -8,9 +8,6 @@ SELECT
     , fes.transfers_out
     , fes.transfers_in_event
     , fes.transfers_out_event
-    , fes.selected_by_percent
-    , fes.selected_rank
-    , fes.selected_rank_type
     , fes.ict_index
     , fes.ict_index_rank_type
     , fes.threat
@@ -63,7 +60,7 @@ SELECT
     , de.status
     , de.news
     , det.short_element_type_name AS element_type
-    , det.element_count
+    , det.element_type_count
     , dt.short_team_name AS team
     , dt.strength
     , dt.strength_overall_home

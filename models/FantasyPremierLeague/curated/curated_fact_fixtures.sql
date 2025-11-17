@@ -9,3 +9,4 @@ SELECT
     , team_a_score
     , minutes_played
 FROM {{ref("cleansed_fixtures")}}
+WHERE valid_to = '9999-12-31 00:00:00.000+00:00'

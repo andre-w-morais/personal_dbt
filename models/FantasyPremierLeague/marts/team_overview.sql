@@ -19,10 +19,34 @@ SELECT
     , df.is_started AS is_fixture_started
     , df.is_finished AS is_fixture_finished
     , ff.team_h_score AS score
+    , ff.team_home_expected_goals AS expected_goals
+    , ff.team_home_expected_assists AS expected_assists
+    , ff.team_home_expected_goals_conceded AS expected_goals_conceded
+    , ff.team_home_saves AS saves
+    , ff.team_home_own_goals AS own_goals
+    , ff.team_home_penalties_missed AS penalties_missed
+    , ff.team_home_penalties_saved AS penalties_saved
+    , ff.team_home_tackles AS tackles
+    , ff.team_home_recoveries AS recoveries
+    , ff.team_home_clearances_blocks_interceptions AS clearances_blocks_interceptions
+    , ff.team_home_yellow_cards AS yellow_cards
+    , ff.team_home_red_cards AS red_cards
     , 'home' AS home_away
     , ff.team_a_id AS opponent_team_id
     , dto.short_team_name AS opponent_team_name
     , ff.team_a_score AS opponent_score
+    , ff.team_away_expected_goals AS opponent_expected_goals
+    , ff.team_away_expected_assists AS opponent_expected_assists
+    , ff.team_away_expected_goals_conceded AS opponent_expected_goals_conceded
+    , ff.team_away_saves AS opponent_saves
+    , ff.team_away_own_goals AS opponent_own_goals
+    , ff.team_away_penalties_missed AS opponent_penalties_missed
+    , ff.team_away_penalties_saved AS opponent_penalties_saved
+    , ff.team_away_tackles AS opponent_tackles
+    , ff.team_away_recoveries AS opponent_recoveries
+    , ff.team_away_clearances_blocks_interceptions AS opponent_clearances_blocks_interceptions
+    , ff.team_away_yellow_cards AS opponent_yellow_cards
+    , ff.team_away_red_cards AS opponent_red_cards
     , dto.strength AS opponent_team_strength
     , dto.strength_overall_away AS opponent_team_strength_overall
     , dto.strength_attack_away AS opponent_team_strength_attack
@@ -57,10 +81,34 @@ SELECT
     , df.is_started AS is_fixture_started
     , df.is_finished AS is_fixture_finished
     , ff.team_a_score AS score
+    , ff.team_away_expected_goals AS expected_goals
+    , ff.team_away_expected_assists AS expected_assists
+    , ff.team_away_expected_goals_conceded AS expected_goals_conceded
+    , ff.team_away_saves AS saves
+    , ff.team_away_own_goals AS own_goals
+    , ff.team_away_penalties_missed AS penalties_missed
+    , ff.team_away_penalties_saved AS penalties_saved
+    , ff.team_away_tackles AS tackles
+    , ff.team_away_recoveries AS recoveries
+    , ff.team_away_clearances_blocks_interceptions AS clearances_blocks_interceptions
+    , ff.team_away_yellow_cards AS yellow_cards
+    , ff.team_away_red_cards AS red_cards
     , 'away' AS home_away
     , ff.team_h_id AS opponent_team_id
     , dto.short_team_name AS opponent_team_name
     , ff.team_h_score AS opponent_score
+    , ff.team_home_expected_goals AS opponent_expected_goals
+    , ff.team_home_expected_assists AS opponent_expected_assists
+    , ff.team_home_expected_goals_conceded AS opponent_expected_goals_conceded
+    , ff.team_home_saves AS opponent_saves
+    , ff.team_home_own_goals AS opponent_own_goals
+    , ff.team_home_penalties_missed AS opponent_penalties_missed
+    , ff.team_home_penalties_saved AS opponent_penalties_saved
+    , ff.team_home_tackles AS opponent_tackles
+    , ff.team_home_recoveries AS opponent_recoveries
+    , ff.team_home_clearances_blocks_interceptions AS opponent_clearances_blocks_interceptions
+    , ff.team_home_yellow_cards AS opponent_yellow_cards
+    , ff.team_home_red_cards AS opponent_red_cards
     , dto.strength AS opponent_team_strength
     , dto.strength_overall_home AS opponent_team_strength_overall
     , dto.strength_attack_home AS opponent_team_strength_attack

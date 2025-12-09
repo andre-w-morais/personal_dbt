@@ -20,7 +20,6 @@ WITH
             , valid_from
             , valid_to
         FROM {{ ref("cleansed_fixtures")}}
-        WHERE valid_to = '9999-12-31 00:00:00.000+00:00'
     )
     SELECT
         fs.fixture_id
@@ -40,6 +39,8 @@ WITH
         , fs.team_a_difficulty AS opponent_difficulty
         , fs.team_a_score AS opponent_score
         , fs.minutes_played
+        , fs.valid_from
+        , fs.valid_to
     FROM fixtures_scan AS fs
     --
     UNION ALL
@@ -62,4 +63,6 @@ WITH
         , fs.team_h_difficulty AS opponent_difficulty
         , fs.team_h_score AS opponent_score
         , fs.minutes_played
+        , fs.valid_from
+        , fs.valid_to
     FROM fixtures_scan AS fs

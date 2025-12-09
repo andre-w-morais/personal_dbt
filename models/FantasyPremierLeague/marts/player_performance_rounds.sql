@@ -3,10 +3,14 @@ SELECT
     , de.element_web_name
     , CONCAT(de.element_first_name, ' ', de.element_second_name) AS element_full_name
     , det.short_element_type_name AS element_type
+    , CASE 
+        WHEN fes.was_home IS TRUE THEN 'Home'
+        WHEN fes.was_home IS FALSE THEN 'Away'
+        END AS home_away
     , dt.short_team_name AS team
     , dot.short_team_name AS opponent_team
     , fes.event_id AS gameweek
-        , CASE
+    , CASE
         WHEN was_home THEN fes.team_h_score
         ELSE fes.team_a_score
         END AS team_score

@@ -8,7 +8,7 @@ SELECT
     , cesr.kickoff_at
     , ce.valid_from
     , ce.valid_to
-    , cesr.was_home
+    , cesr.home_away
     , cesr.team_score
     , cesr.opponent_team_score
     , cesr.total_points

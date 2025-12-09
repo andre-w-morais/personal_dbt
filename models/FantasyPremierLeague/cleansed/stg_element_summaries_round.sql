@@ -53,11 +53,11 @@ SELECT
         WHEN was_home IS FALSE THEN "Away" END AS home_away
     , opponent_team AS opponent_team_id
     , CASE
-        WHEN was_home THEN fes.team_h_score
+        WHEN was_home THEN team_h_score
         ELSE team_a_score END AS team_score
     , CASE
-        WHEN was_home THEN fes.team_a_score
-        ELSE fes.team_h_score
+        WHEN was_home THEN team_a_score
+        ELSE team_h_score
         END AS opponent_team_score
     , kickoff_time AS kickoff_at
     , total_points

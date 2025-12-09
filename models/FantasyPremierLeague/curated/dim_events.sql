@@ -9,4 +9,4 @@ SELECT
     , is_finished
     , valid_from
     , valid_to
-FROM {{ref("cleansed_events")}}
+FROM {{ref("stg_events")}}

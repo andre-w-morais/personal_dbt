@@ -27,20 +27,23 @@ WITH
         , status
         , news
         , news_added
-        , now_cost
+        , now_cost / 10 AS now_cost
         , now_cost_rank
         , now_cost_rank_type
-        , cost_change_start
-        , cost_change_start_fall
-        , cost_change_event
-        , cost_change_event_fall
+        , cost_change_start / 10 AS cost_change_start
+        , cost_change_start_fall / 10 AS cost_change_start_fall
+        , cost_change_event / 10 AS cost_change_event
+        , cost_change_event_fall / 10 AS cost_change_event_fall
         , selected_by_percent
         , selected_rank
         , selected_rank_type
+        , selected_by_percent - LAG(selected_by_percent) OVER(PARTITION BY id ORDER BY extraction_timestamp) AS change_in_selection_day
         , transfers_out_event
         , transfers_out
+        , transfers_out - LAG(transfers_out) OVER(PARTITION BY id ORDER BY extraction_timestamp ASC) AS transfers_out_day
         , transfers_in_event
         , transfers_in
+        , transfers_in - LAG(transfers_in) OVER(PARTITION BY id ORDER BY extraction_timestamp ASC) AS transfers_in_day
         , ict_index
         , ict_index_rank
         , ict_index_rank_type
@@ -146,10 +149,14 @@ SELECT
     , selected_by_percent
     , selected_rank
     , selected_rank_type
+    , change_in_selection_day
     , transfers_out_event
     , transfers_out
+    , transfers_out_day
     , transfers_in_event
     , transfers_in
+    , transfers_in_day
+    , transfers_in_day - transfers_out_day AS net_transfers_day
     , ict_index
     , ict_index_rank
     , ict_index_rank_type

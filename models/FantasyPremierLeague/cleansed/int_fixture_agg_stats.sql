@@ -13,6 +13,6 @@ SELECT
     , SUM(esr.clearances_blocks_interceptions) AS clearances_blocks_interceptions
     , SUM(esr.yellow_cards) AS yellow_cards
     , SUM(esr.red_cards) AS red_cards
-FROM {{ref("cleansed_element_summaries_round")}} AS esr
-    LEFT JOIN {{ref("cleansed_elements")}} AS e ON e.element_id = esr.element_id AND (esr.kickoff_at >= e.valid_from AND esr.kickoff_at < e.valid_to)
+FROM {{ref("stg_element_summaries_round")}} AS esr
+    LEFT JOIN {{ref("stg_elements")}} AS e ON e.element_id = esr.element_id AND (esr.kickoff_at >= e.valid_from AND esr.kickoff_at < e.valid_to)
 GROUP BY esr.fixture_id, e.team_id

@@ -32,7 +32,7 @@ SELECT
     , fasa.yellow_cards AS team_away_yellow_cards
     , fasa.red_cards AS team_away_red_cards
     , f.minutes_played
-FROM {{ref("cleansed_fixtures")}} AS f
+FROM {{ref("stg_fixtures")}} AS f
     LEFT JOIN {{ref("int_fixture_agg_stats")}} AS fash ON fash.fixture_id = f.fixture_id AND fash.team_id = f.team_h_id
     LEFT JOIN {{ref("int_fixture_agg_stats")}} AS fasa ON fasa.fixture_id = f.fixture_id AND fasa.team_id = f.team_a_id
 WHERE f.valid_to = '9999-12-31 00:00:00.000+00:00'

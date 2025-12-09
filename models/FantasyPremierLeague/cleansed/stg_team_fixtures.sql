@@ -19,7 +19,7 @@ WITH
             , minutes_played
             , valid_from
             , valid_to
-        FROM {{ ref("cleansed_fixtures")}}
+        FROM {{ ref("stg_fixtures")}}
     )
     SELECT
         fs.fixture_id

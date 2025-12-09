@@ -70,7 +70,7 @@ SELECT
     , dt.strength_defence_home
     , dt.strength_defence_away
     , dt.position
-FROM {{ ref("curated_fact_elements_snapshot") }} AS fes
-    LEFT JOIN {{ ref("curated_dim_elements") }} AS de ON de.element_code = fes.element_code AND (fes.snapshot_at >= de.valid_from AND fes.snapshot_at < de.valid_to)
-    LEFT JOIN {{ ref("curated_dim_element_types") }} AS det ON det.element_type_id = fes.element_type_id AND (fes.snapshot_at >= det.valid_from AND fes.snapshot_at < det.valid_to)
-    LEFT JOIN {{ ref("curated_dim_teams") }} AS dt ON dt.team_code = fes.team_code AND (fes.snapshot_at >= dt.valid_from AND fes.snapshot_at < dt.valid_to) 
+FROM {{ ref("fact_elements_snapshot") }} AS fes
+    LEFT JOIN {{ ref("dim_elements") }} AS de ON de.element_code = fes.element_code AND (fes.snapshot_at >= de.valid_from AND fes.snapshot_at < de.valid_to)
+    LEFT JOIN {{ ref("dim_element_types") }} AS det ON det.element_type_id = fes.element_type_id AND (fes.snapshot_at >= det.valid_from AND fes.snapshot_at < det.valid_to)
+    LEFT JOIN {{ ref("dim_teams") }} AS dt ON dt.team_code = fes.team_code AND (fes.snapshot_at >= dt.valid_from AND fes.snapshot_at < dt.valid_to) 

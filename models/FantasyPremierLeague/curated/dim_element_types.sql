@@ -5,4 +5,4 @@ SELECT
     , element_type_count
     , valid_from
     , valid_to
-FROM {{ref("cleansed_element_types")}}
+FROM {{ref("stg_element_types")}}

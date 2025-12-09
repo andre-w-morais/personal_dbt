@@ -20,4 +20,4 @@ SELECT
     , news
     , valid_from
     , valid_to
-FROM {{ref('cleansed_elements')}}
+FROM {{ref('stg_elements')}}

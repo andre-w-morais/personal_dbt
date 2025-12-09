@@ -6,4 +6,4 @@ SELECT
     , highest_score
     , valid_from
     , valid_to
-FROM {{ref("cleansed_phases")}}
+FROM {{ref("stg_phases")}}

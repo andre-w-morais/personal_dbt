@@ -7,4 +7,4 @@ SELECT
     , is_provisionally_finished
     , valid_from
     , valid_to
-FROM {{ref("cleansed_fixtures")}}
+FROM {{ref("stg_fixtures")}}

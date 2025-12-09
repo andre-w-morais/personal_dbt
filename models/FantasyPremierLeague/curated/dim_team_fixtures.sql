@@ -1,7 +1,5 @@
 SELECT
     fixture_id
-    , is_started
-    , is_finished
     , home_away
     , is_started
     , is_finished

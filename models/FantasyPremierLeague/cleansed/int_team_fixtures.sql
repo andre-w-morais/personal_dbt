@@ -42,7 +42,7 @@ WITH
             , tf.opponent_score
             , tf.minutes_played
         FROM {{ ref("stg_team_fixtures") }} tf
-            LEFT JOIN {{ref("int_fixture_agg_stats")}} AS avt ON fas.team_id = tf.team_id AND fas.fixture_id = tf.fixture_id
+            LEFT JOIN {{ref("int_fixture_agg_stats")}} AS fas ON fas.team_id = tf.team_id AND fas.fixture_id = tf.fixture_id
         WHERE tf.valid_to = '9999-12-31 00:00:00.000'
     )
 SELECT

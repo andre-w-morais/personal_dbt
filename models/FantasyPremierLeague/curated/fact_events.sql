@@ -9,5 +9,5 @@ SELECT
     , transfers_made
     , total_fpl_teams
     , highest_score
-FROM {{ ref("cleansed_events") }}
+FROM {{ ref("stg_events") }}
 WHERE valid_to = '9999-12-31 00:00:00.000+00:00'

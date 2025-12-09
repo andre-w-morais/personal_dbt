@@ -26,7 +26,6 @@ With ordering as (
     , extraction_timestamp
     , row_number() over(partition by id order by extraction_timestamp desc) as sort_latest_record
     , row_number() over(partition by id order by extraction_timestamp asc) as sort_first_record
-
   FROM {{ source("fantasy_premier_league", "raw_fpl_events") }}
 )
   SELECT

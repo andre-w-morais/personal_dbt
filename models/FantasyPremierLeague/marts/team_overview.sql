@@ -52,11 +52,11 @@ SELECT
     , dto.strength_attack_away AS opponent_team_strength_attack
     , dto.strength_defence_away AS opponent_team_strength_defence
     , dto.position AS opponent_team_position
-FROM {{ ref("curated_fact_fixtures") }} AS ff
-    LEFT JOIN {{ ref("curated_dim_fixtures") }} AS df ON df.fixture_code = ff.fixture_code AND (CURRENT_TIMESTAMP() BETWEEN df.valid_from AND df.valid_to)
-    LEFT JOIN {{ ref("curated_dim_events") }} AS de ON de.event_id = ff.event_id AND (df.kickoff_at BETWEEN de.valid_from AND de.valid_to)
-    LEFT JOIN {{ ref("curated_dim_teams") }} AS dt ON dt.team_id = ff.team_h_id AND (df.kickoff_at BETWEEN dt.valid_from AND dt.valid_to)
-    LEFT JOIN {{ ref("curated_dim_teams") }} AS dto ON dto.team_id = ff.team_a_id AND (df.kickoff_at BETWEEN dto.valid_from AND dto.valid_to)
+FROM {{ ref("fact_fixtures") }} AS ff
+    LEFT JOIN {{ ref("dim_fixtures") }} AS df ON df.fixture_code = ff.fixture_code AND (CURRENT_TIMESTAMP() BETWEEN df.valid_from AND df.valid_to)
+    LEFT JOIN {{ ref("dim_events") }} AS de ON de.event_id = ff.event_id AND (df.kickoff_at BETWEEN de.valid_from AND de.valid_to)
+    LEFT JOIN {{ ref("dim_teams") }} AS dt ON dt.team_id = ff.team_h_id AND (df.kickoff_at BETWEEN dt.valid_from AND dt.valid_to)
+    LEFT JOIN {{ ref("dim_teams") }} AS dto ON dto.team_id = ff.team_a_id AND (df.kickoff_at BETWEEN dto.valid_from AND dto.valid_to)
 --
 UNION ALL
 --
@@ -114,8 +114,8 @@ SELECT
     , dto.strength_attack_home AS opponent_team_strength_attack
     , dto.strength_defence_home AS opponent_team_strength_defence
     , dto.position AS opponent_team_position
-FROM {{ ref("curated_fact_fixtures") }} AS ff
-    LEFT JOIN {{ ref("curated_dim_fixtures") }} AS df ON df.fixture_code = ff.fixture_code AND (CURRENT_TIMESTAMP() BETWEEN df.valid_from AND df.valid_to)
-    LEFT JOIN {{ ref("curated_dim_events") }} AS de ON de.event_id = ff.event_id AND (df.kickoff_at BETWEEN de.valid_from AND de.valid_to)
-    LEFT JOIN {{ ref("curated_dim_teams") }} AS dt ON dt.team_id = ff.team_a_id AND (df.kickoff_at BETWEEN dt.valid_from AND dt.valid_to)
-    LEFT JOIN {{ ref("curated_dim_teams") }} AS dto ON dto.team_id = ff.team_h_id AND (df.kickoff_at BETWEEN dto.valid_from AND dto.valid_to)
+FROM {{ ref("fact_fixtures") }} AS ff
+    LEFT JOIN {{ ref("dim_fixtures") }} AS df ON df.fixture_code = ff.fixture_code AND (CURRENT_TIMESTAMP() BETWEEN df.valid_from AND df.valid_to)
+    LEFT JOIN {{ ref("dim_events") }} AS de ON de.event_id = ff.event_id AND (df.kickoff_at BETWEEN de.valid_from AND de.valid_to)
+    LEFT JOIN {{ ref("dim_teams") }} AS dt ON dt.team_id = ff.team_a_id AND (df.kickoff_at BETWEEN dt.valid_from AND dt.valid_to)
+    LEFT JOIN {{ ref("dim_teams") }} AS dto ON dto.team_id = ff.team_h_id AND (df.kickoff_at BETWEEN dto.valid_from AND dto.valid_to)

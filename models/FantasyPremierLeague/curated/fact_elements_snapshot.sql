@@ -81,4 +81,4 @@ SELECT
     , dreamteam_count
     , valid_from as snapshot_at
     , sort_latest_record
-FROM {{ref("cleansed_elements")}}
+FROM {{ref("stg_elements")}}

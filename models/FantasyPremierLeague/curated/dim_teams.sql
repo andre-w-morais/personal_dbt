@@ -14,4 +14,4 @@ SELECT
     , position
     , valid_from
     , valid_to
-FROM {{ref("cleansed_teams")}}
+FROM {{ref("stg_teams")}}

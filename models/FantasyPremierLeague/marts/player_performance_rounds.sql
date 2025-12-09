@@ -49,7 +49,7 @@ SELECT
     , fes.transfers_balance
     , fes.selected
 FROM {{ ref("fact_element_summaries_rounds") }} AS fes
-    LEFT JOIN {{ref("curated_dim_elements")}} AS de ON de.element_id = fes.element_id AND (fes.kickoff_at BETWEEN de.valid_from AND de.valid_to)
-    LEFT JOIN {{ref("curated_dim_element_types")}} AS det ON det.element_type_id = fes.element_type_id AND (fes.kickoff_at BETWEEN det.valid_from AND det.valid_to)
-    LEFT JOIN {{ref("curated_dim_teams")}} AS dot ON dot.team_id = fes.opponent_team_id AND (fes.kickoff_at BETWEEN dot.valid_from AND dot.valid_to)
-    LEFT JOIN {{ref("curated_dim_teams")}} AS dt ON dt.team_id = fes.team_id AND (fes.kickoff_at BETWEEN dt.valid_from AND dt.valid_to)
+    LEFT JOIN {{ref("dim_elements")}} AS de ON de.element_id = fes.element_id AND (fes.kickoff_at BETWEEN de.valid_from AND de.valid_to)
+    LEFT JOIN {{ref("dim_element_types")}} AS det ON det.element_type_id = fes.element_type_id AND (fes.kickoff_at BETWEEN det.valid_from AND det.valid_to)
+    LEFT JOIN {{ref("dim_teams")}} AS dot ON dot.team_id = fes.opponent_team_id AND (fes.kickoff_at BETWEEN dot.valid_from AND dot.valid_to)
+    LEFT JOIN {{ref("dim_teams")}} AS dt ON dt.team_id = fes.team_id AND (fes.kickoff_at BETWEEN dt.valid_from AND dt.valid_to)

@@ -31,4 +31,4 @@ SELECT
     , threat
     , creativity
     , influence
-FROM {{ref("cleansed_element_summaries_past_seasons")}}
+FROM {{ref("stg_element_summaries_past_seasons")}}

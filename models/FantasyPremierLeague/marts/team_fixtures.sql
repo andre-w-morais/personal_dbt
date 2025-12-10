@@ -1,6 +1,7 @@
 SELECT
     tf.fixture_id
-    , df.fixture_code
+    , tf.fixture_code
+    , df.home_away
     , df.is_started
     , df.is_finished
     , tf.kickoff_at
@@ -55,7 +56,7 @@ SELECT
     , tf.opponent_score
     , tf.minutes_played
 FROM {{ ref("fact_team_fixtures") }} tf 
-    LEFT JOIN {{ ref("dim_fixtures") }} df ON df.fixture_id = tf.fixture_id AND (tf.kickoff_at >= df.valid_from AND tf.kickoff_at < df.valid_to)
+    LEFT JOIN {{ ref("dim_team_fixtures") }} df ON df.fixture_id = tf.fixture_id AND (tf.kickoff_at >= df.valid_from AND tf.kickoff_at < df.valid_to)
     LEFT JOIN {{ ref("dim_events") }} de ON de.event_id = tf.event_id AND (tf.kickoff_at >= de.valid_from AND tf.kickoff_at < de.valid_to)
     LEFT JOIN {{ ref("dim_teams") }} dt ON dt.team_id = tf.team_id AND (tf.kickoff_at >= dt.valid_from AND tf.kickoff_at < dt.valid_to)
     LEFT JOIN {{ ref("dim_teams") }} do ON do.team_id = tf.team_id AND (tf.kickoff_at >= do.valid_from AND tf.kickoff_at < do.valid_to)

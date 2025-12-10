@@ -22,6 +22,13 @@ SELECT
     , team_expected_assists_home_away_5game_form
     , team_expected_assists_5game_form
     , team_expected_assists_10game_form
+    , team_goals_conceded
+    , team_goals_conceded_home_away_5game_form
+    , team_goals_conceded_home_away_5game_form_rank
+    , team_goals_conceded_5game_form
+    , team_goals_conceded_5game_form_rank
+    , team_goals_conceded_10game_form  
+    , team_goals_conceded_10game_form_rank
     , team_expected_goals_conceded
     , team_expected_goals_conceded_home_away_5game_form
     , team_expected_goals_conceded_home_away_5game_form_rank
@@ -31,13 +38,12 @@ SELECT
     , team_expected_goals_conceded_10game_form_rank
     , yellow_cards
     , team_yellow_cards_home_away_5game_form
-    , team_yellow_cards_conceded_5game_form
-    , team_yellow_cards_conceded_10game_form  
+    , team_yellow_cards_5game_form
+    , team_yellow_cards_10game_form  
     , red_cards
     , team_red_cards_home_away_5game_form
-    , team_red_cards_conceded_5game_form
-    , team_red_cards_conceded_10game_form  
+    , team_red_cards_5game_form
+    , team_red_cards_10game_form  
     , opponent_team_id
-    , opponent_score
     , minutes_played
 FROM {{ ref("int_team_fixtures") }}

@@ -34,6 +34,13 @@ SELECT
     , tf.team_expected_assists_home_away_5game_form
     , tf.team_expected_assists_5game_form
     , tf.team_expected_assists_10game_form
+    , tf.team_goals_conceded
+    , tf.team_goals_conceded_home_away_5game_form
+    , tf.team_goals_conceded_home_away_5game_form_rank
+    , tf.team_goals_conceded_5game_form
+    , tf.team_goals_conceded_5game_form_rank
+    , tf.team_goals_conceded_10game_form  
+    , tf.team_goals_conceded_10game_form_rank
     , tf.team_expected_goals_conceded
     , tf.team_expected_goals_conceded_home_away_5game_form
     , tf.team_expected_goals_conceded_home_away_5game_form_rank
@@ -43,17 +50,16 @@ SELECT
     , tf.team_expected_goals_conceded_10game_form_rank
     , tf.yellow_cards
     , tf.team_yellow_cards_home_away_5game_form
-    , tf.team_yellow_cards_conceded_5game_form
-    , tf.team_yellow_cards_conceded_10game_form  
+    , tf.team_yellow_cards_5game_form
+    , tf.team_yellow_cards_10game_form  
     , tf.red_cards
     , tf.team_red_cards_home_away_5game_form
-    , tf.team_red_cards_conceded_5game_form
-    , tf.team_red_cards_conceded_10game_form  
+    , tf.team_red_cards_5game_form
+    , tf.team_red_cards_10game_form  
     , tf.opponent_team_id
     , do.short_team_name AS opponent
     , do.strength AS opponent_strength
     , do.position AS opponent_league_position
-    , tf.opponent_score
     , tf.minutes_played
 FROM {{ ref("fact_team_fixtures") }} tf 
     LEFT JOIN {{ ref("dim_team_fixtures") }} df ON df.fixture_id = tf.fixture_id AND (tf.kickoff_at >= df.valid_from AND tf.kickoff_at < df.valid_to)

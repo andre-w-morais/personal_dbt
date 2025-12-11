@@ -17,19 +17,19 @@ WITH
             , SUM(tf.team_score) OVER(PARTITION BY tf.team_id, tf.home_away ORDER BY tf.event_id ASC ROWS BETWEEN 5 PRECEDING AND 1 PRECEDING) AS team_score_home_away_5game_form
             , SUM(tf.team_score) OVER(PARTITION BY tf.team_id ORDER BY tf.event_id ASC ROWS BETWEEN 5 PRECEDING AND 1 PRECEDING) AS team_score_5game_form
             , SUM(tf.team_score) OVER(PARTITION BY tf.team_id ORDER BY tf.event_id ASC ROWS BETWEEN 10 PRECEDING AND 1 PRECEDING) AS team_score_10game_form
-            , fas.expected_goals AS team_expected_goals
+            , fas.expected_goals
             , SUM(CASE WHEN tf.team_score IS NULL THEN NULL ELSE fas.expected_goals END) OVER(PARTITION BY tf.team_id, tf.home_away ORDER BY tf.event_id ASC ROWS BETWEEN 5 PRECEDING AND 1 PRECEDING) AS team_expected_goals_home_away_5game_form
             , SUM(CASE WHEN tf.team_score IS NULL THEN NULL ELSE fas.expected_goals END) OVER(PARTITION BY tf.team_id ORDER BY tf.event_id ASC ROWS BETWEEN 5 PRECEDING AND 1 PRECEDING) AS team_expected_goals_5game_form
             , SUM(CASE WHEN tf.team_score IS NULL THEN NULL ELSE fas.expected_goals END) OVER(PARTITION BY tf.team_id ORDER BY tf.event_id ASC ROWS BETWEEN 10 PRECEDING AND 1 PRECEDING) AS team_expected_goals_10game_form
-            , fas.expected_assists AS team_expected_assists
+            , fas.expected_assists
             , SUM(CASE WHEN tf.team_score IS NULL THEN NULL ELSE fas.expected_assists END) OVER(PARTITION BY tf.team_id, tf.home_away ORDER BY tf.event_id ASC ROWS BETWEEN 5 PRECEDING AND 1 PRECEDING) AS team_expected_assists_home_away_5game_form
             , SUM(CASE WHEN tf.team_score IS NULL THEN NULL ELSE fas.expected_assists END) OVER(PARTITION BY tf.team_id ORDER BY tf.event_id ASC ROWS BETWEEN 5 PRECEDING AND 1 PRECEDING) AS team_expected_assists_5game_form
             , SUM(CASE WHEN tf.team_score IS NULL THEN NULL ELSE fas.expected_assists END) OVER(PARTITION BY tf.team_id ORDER BY tf.event_id ASC ROWS BETWEEN 10 PRECEDING AND 1 PRECEDING) AS team_expected_assists_10game_form
-            , tf.opponent_score AS team_goals_conceded
+            , tf.opponent_score
             , SUM(tf.opponent_score) OVER(PARTITION BY tf.team_id, tf.home_away ORDER BY tf.event_id ASC ROWS BETWEEN 5 PRECEDING AND 1 PRECEDING) AS team_goals_conceded_home_away_5game_form
             , SUM(tf.opponent_score) OVER(PARTITION BY tf.team_id ORDER BY tf.event_id ASC ROWS BETWEEN 5 PRECEDING AND 1 PRECEDING) AS team_goals_conceded_5game_form
             , SUM(tf.opponent_score) OVER(PARTITION BY tf.team_id ORDER BY tf.event_id ASC ROWS BETWEEN 10 PRECEDING AND 1 PRECEDING) AS team_goals_conceded_10game_form
-            , fas.expected_goals_conceded AS team_expected_goals_conceded
+            , fas.expected_goals_conceded
             , SUM(CASE WHEN tf.team_score IS NULL THEN NULL ELSE fas.expected_goals_conceded END) OVER(PARTITION BY tf.team_id, tf.home_away ORDER BY tf.event_id ASC ROWS BETWEEN 5 PRECEDING AND 1 PRECEDING) AS team_expected_goals_conceded_home_away_5game_form
             , SUM(CASE WHEN tf.team_score IS NULL THEN NULL ELSE fas.expected_goals_conceded END) OVER(PARTITION BY tf.team_id ORDER BY tf.event_id ASC ROWS BETWEEN 5 PRECEDING AND 1 PRECEDING) AS team_expected_goals_conceded_5game_form
             , SUM(CASE WHEN tf.team_score IS NULL THEN NULL ELSE fas.expected_goals_conceded END) OVER(PARTITION BY tf.team_id ORDER BY tf.event_id ASC ROWS BETWEEN 10 PRECEDING AND 1 PRECEDING) AS team_expected_goals_conceded_10game_form  
@@ -68,25 +68,25 @@ SELECT
     , RANK() OVER(PARTITION BY event_id ORDER BY team_score_5game_form DESC) AS team_score_5game_form_rank
     , team_score_10game_form
     , RANK() OVER(PARTITION BY event_id ORDER BY team_score_10game_form DESC) AS team_score_10game_form_rank
-    , ROUND(team_expected_goals, 2) AS team_expected_goals
+    , ROUND(expected_goals, 2) AS team_expected_goals
     , ROUND(team_expected_goals_home_away_5game_form, 2) AS team_expected_goals_home_away_5game_form
     , RANK() OVER(PARTITION BY event_id ORDER BY team_expected_goals_home_away_5game_form DESC) AS team_expected_goals_home_away_5game_form_rank
     , ROUND(team_expected_goals_5game_form, 2) AS team_expected_goals_5game_form
     , RANK() OVER(PARTITION BY event_id ORDER BY team_expected_goals_5game_form DESC) AS team_expected_goals_5game_form_rank
     , ROUND(team_expected_goals_10game_form, 2) AS team_expected_goals_10game_form
     , RANK() OVER(PARTITION BY event_id ORDER BY team_expected_goals_10game_form DESC) AS team_expected_goals_10game_form_rank
-    , ROUND(team_expected_assists, 2) AS team_expected_assists
+    , ROUND(expected_assists, 2) AS team_expected_assists
     , ROUND(team_expected_assists_home_away_5game_form, 2) AS team_expected_assists_home_away_5game_form
     , ROUND(team_expected_assists_5game_form, 2) AS team_expected_assists_5game_form
     , ROUND(team_expected_assists_10game_form, 2) AS team_expected_assists_10game_form
-    , team_goals_conceded
+    , opponent_score AS team_goals_conceded
     , team_goals_conceded_home_away_5game_form
     , RANK() OVER(PARTITION BY event_id ORDER BY team_goals_conceded_home_away_5game_form DESC) AS team_goals_conceded_home_away_5game_form_rank
     , team_goals_conceded_5game_form
     , RANK() OVER(PARTITION BY event_id ORDER BY team_goals_conceded_5game_form DESC) AS team_goals_conceded_5game_form_rank
     , team_goals_conceded_10game_form
     , RANK() OVER(PARTITION BY event_id ORDER BY team_goals_conceded_10game_form DESC) AS team_goals_conceded_10game_form_rank
-    , ROUND(team_expected_goals_conceded, 2) AS team_expected_goals_conceded
+    , ROUND(expected_goals_conceded, 2) AS team_expected_goals_conceded
     , ROUND(team_expected_goals_conceded_home_away_5game_form, 2) AS team_expected_goals_conceded_home_away_5game_form
     , RANK() OVER(PARTITION BY event_id ORDER BY team_expected_goals_conceded_home_away_5game_form DESC) AS team_expected_goals_conceded_home_away_5game_form_rank
     , ROUND(team_expected_goals_conceded_5game_form, 2) AS team_expected_goals_conceded_5game_form

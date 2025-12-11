@@ -1,5 +1,6 @@
 SELECT
     fixture_id
+    , team_id
     , home_away
     , is_started
     , is_finished

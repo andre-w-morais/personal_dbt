@@ -65,4 +65,4 @@ FROM {{ ref("fact_team_fixtures") }} tf
     LEFT JOIN {{ ref("dim_team_fixtures") }} df ON df.fixture_id = tf.fixture_id AND (tf.kickoff_at >= df.valid_from AND tf.kickoff_at < df.valid_to)
     LEFT JOIN {{ ref("dim_events") }} de ON de.event_id = tf.event_id AND (tf.kickoff_at >= de.valid_from AND tf.kickoff_at < de.valid_to)
     LEFT JOIN {{ ref("dim_teams") }} dt ON dt.team_id = tf.team_id AND (tf.kickoff_at >= dt.valid_from AND tf.kickoff_at < dt.valid_to)
-    LEFT JOIN {{ ref("dim_teams") }} do ON do.team_id = tf.team_id AND (tf.kickoff_at >= do.valid_from AND tf.kickoff_at < do.valid_to)
+    LEFT JOIN {{ ref("dim_teams") }} do ON do.team_id = tf.opponent_team_id AND (tf.kickoff_at >= do.valid_from AND tf.kickoff_at < do.valid_to)
